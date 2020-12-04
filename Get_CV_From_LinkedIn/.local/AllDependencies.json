@@ -2944,9 +2944,9 @@
     "restore": {
       "projectUniqueName": "Get_CV_From_LinkedIn",
       "projectName": "Get_CV_From_LinkedIn",
-      "projectPath": "C:\\Users\\tabac\\Documents\\UiPath\\Get_CV_From_LinkedIn\\.local",
+      "projectPath": "C:\\Users\\tabac\\Desktop\\github_Bac\\RPA\\Get_CV_From_LinkedIn\\.local",
       "packagesPath": "C:\\Users\\tabac\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tabac\\Documents\\UiPath\\Get_CV_From_LinkedIn\\.local"
+      "outputPath": "C:\\Users\\tabac\\Desktop\\github_Bac\\RPA\\Get_CV_From_LinkedIn\\.local"
     },
     "frameworks": {
       "net461": {
