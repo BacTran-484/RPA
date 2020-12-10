@@ -1,6 +1,14 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Get_Data" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1106,1426" sap2010:WorkflowViewState.IdRef="exe1_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Get_Data" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Row" Type="InArgument(sd:DataRow)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1019,3036</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>exe1_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="30">
+    <scg:List x:TypeArguments="x:String" Capacity="60">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -31,10 +39,12 @@
       <x:String>UiPath.Excel.Activities</x:String>
       <x:String>System.Reflection</x:String>
       <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>DocumentFormat.OpenXml.Spreadsheet</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="27">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="54">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -62,75 +72,162 @@
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>DocumentFormat.OpenXml</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Data Scaping" sap:VirtualizedContainerService.HintSize="552,1361" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Data Scaping" sap:VirtualizedContainerService.HintSize="596,2971" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_Content" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach Browser 'Search CV'" sap:VirtualizedContainerService.HintSize="510,1269" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="ddc021f7ac243ffd52e3a56a956745ae" Selector="&lt;html app='msedge.exe' title='&amp;quot;#python #hanoi #sharecv&amp;quot; | Search | LinkedIn' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach Browser 'Search CV'" sap:VirtualizedContainerService.HintSize="554,2879" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="ddc021f7ac243ffd52e3a56a956745ae" Selector="&lt;html app='msedge.exe' title='* | Search | LinkedIn' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Scraping" sap:VirtualizedContainerService.HintSize="476,1123" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence sap:VirtualizedContainerService.HintSize="520,2733" sap2010:WorkflowViewState.IdRef="Sequence_6">
             <Sequence.Variables>
-              <Variable x:TypeArguments="x:Boolean" Name="endPage" />
-              <Variable x:TypeArguments="sd:DataTable" Name="dt_Content" />
+              <Variable x:TypeArguments="x:Boolean" Name="isEndPage" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:InterruptibleWhile DisplayName="While" sap:VirtualizedContainerService.HintSize="434,557" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
-              <ui:InterruptibleWhile.Body>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,392" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <ui:InterruptibleDoWhile DisplayName="Do While" sap:VirtualizedContainerService.HintSize="478,1589" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+              <ui:InterruptibleDoWhile.Body>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,1424" sap2010:WorkflowViewState.IdRef="Sequence_7">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:ImageFound DisplayName="Image Exists 'End Page'" Found="[endPage]" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ImageFound_1">
-                    <ui:ImageFound.Image>
-                      <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAACQAAAB4CAYAAACaTFAUAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGZSURBVHhe7dbNasJAFMVx3/8NsvZBxGVABBHyCMEaPzJ2U0V66wUnjelNT20yzTScA/+dkh+TKJm8no7ybM65zuV5bkaQL8syWa/XslqtZLlcymKxkDRNeUJVFkYjyGdhNIJ8FkYjyGdhtE6g+Xz+dAShCEIRhCIIRRAqWlCQd2rrgij/Xet0NIIIQhGEIghFEIogFEEoglAEoaIF8Z26LYJQBKEIQhGEIghFEIogFEEoglD+u//nnfrkDmJlQXyDgJpFB/IFB7lyL1YWxhcUVB53Us/CaX8GOh4K8TVxviYsKOiw30q9OrCJrGAhQbtiI/vdy0MW8AHWAyhJErNJsd1IPQU2kU1YHyDrdLSJtO5dLpfz7WdefoENBPrc+fxWnZqiBgfprtdrhYoCpNOT0ucsGpDOlYH/h+7X+fH0QY8KpL++yEC320YQGEFoBKERhEYQGkFoBKERhEYQ2ihBs9nMbDBQWwTVL241LlCICEIRhBovaDqdtmZ9vq1eT6grRuv9lnXBaEGeod9itPE+1H1FEIqg73PyAZohykZy+f2hAAAAAElFTkSuQmCC" />
-                    </ui:ImageFound.Image>
-                    <ui:ImageFound.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="f924d427-4246-43ef-ba05-9fc365702da3" TimeoutMS="3000" WaitForReady="COMPLETE" />
-                    </ui:ImageFound.Target>
-                  </ui:ImageFound>
-                  <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBetweenKeys="300" DisplayName="Send Hotkey 'End Page'" sap:VirtualizedContainerService.HintSize="334,154" sap2010:WorkflowViewState.IdRef="SendHotkey_1" Key="end" KeyModifiers="Ctrl" SpecialKey="True">
+                  <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBetweenKeys="3000" DisplayName="Send Hotkey 'Intermediate D3D Window'" sap:VirtualizedContainerService.HintSize="334,154" sap2010:WorkflowViewState.IdRef="SendHotkey_2" Key="end" KeyModifiers="Ctrl" SpecialKey="True">
                     <ui:SendHotkey.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8d4e77af-8628-47be-8dee-ae0081d399c2" InformativeScreenshot="9ae835f9092212d6906a0e82046f9c21" Selector="&lt;webctrl id='ember*' tag='UL' /&gt;" TimeoutMS="2000" WaitForReady="COMPLETE" />
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="91da01b2-77e2-4406-8d8c-c4394c749846" InformativeScreenshot="7e04c5c61ec578fde300d72003ab7f33" Selector="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div' idx='3' tag='DIV' /&gt;" TimeoutMS="3000" WaitForReady="COMPLETE" />
                     </ui:SendHotkey.Target>
                   </ui:SendHotkey>
+                  <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBetweenKeys="3000" DisplayName="Send Hotkey 'Intermediate D3D Window'" sap:VirtualizedContainerService.HintSize="334,154" sap2010:WorkflowViewState.IdRef="SendHotkey_5" Key="end" KeyModifiers="Ctrl" SpecialKey="True">
+                    <ui:SendHotkey.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="91da01b2-77e2-4406-8d8c-c4394c749846" InformativeScreenshot="7e04c5c61ec578fde300d72003ab7f33" Selector="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div' idx='3' tag='DIV' /&gt;" WaitForReady="COMPLETE">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                      </ui:Target>
+                    </ui:SendHotkey.Target>
+                  </ui:SendHotkey>
+                  <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBetweenKeys="3000" DisplayName="Send Hotkey 'Intermediate D3D Window'" sap:VirtualizedContainerService.HintSize="334,154" sap2010:WorkflowViewState.IdRef="SendHotkey_6" Key="end" KeyModifiers="Ctrl" SpecialKey="True">
+                    <ui:SendHotkey.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="91da01b2-77e2-4406-8d8c-c4394c749846" InformativeScreenshot="7e04c5c61ec578fde300d72003ab7f33" Selector="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div' idx='3' tag='DIV' /&gt;" WaitForReady="COMPLETE">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                      </ui:Target>
+                    </ui:SendHotkey.Target>
+                  </ui:SendHotkey>
+                  <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBetweenKeys="3000" DisplayName="Send Hotkey 'Intermediate D3D Window'" sap:VirtualizedContainerService.HintSize="334,154" sap2010:WorkflowViewState.IdRef="SendHotkey_7" Key="end" KeyModifiers="Ctrl" SpecialKey="True">
+                    <ui:SendHotkey.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="91da01b2-77e2-4406-8d8c-c4394c749846" InformativeScreenshot="7e04c5c61ec578fde300d72003ab7f33" Selector="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div' idx='3' tag='DIV' /&gt;" WaitForReady="COMPLETE">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                      </ui:Target>
+                    </ui:SendHotkey.Target>
+                  </ui:SendHotkey>
+                  <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBetweenKeys="3000" DisplayName="Send Hotkey 'Intermediate D3D Window'" sap:VirtualizedContainerService.HintSize="334,154" sap2010:WorkflowViewState.IdRef="SendHotkey_8" Key="end" KeyModifiers="Ctrl" SpecialKey="True">
+                    <ui:SendHotkey.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="91da01b2-77e2-4406-8d8c-c4394c749846" InformativeScreenshot="7e04c5c61ec578fde300d72003ab7f33" Selector="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div' idx='3' tag='DIV' /&gt;" WaitForReady="COMPLETE">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                      </ui:Target>
+                    </ui:SendHotkey.Target>
+                  </ui:SendHotkey>
+                  <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBetweenKeys="3000" DisplayName="Send Hotkey 'Intermediate D3D Window'" sap:VirtualizedContainerService.HintSize="334,154" sap2010:WorkflowViewState.IdRef="SendHotkey_9" Key="end" KeyModifiers="Ctrl" SpecialKey="True">
+                    <ui:SendHotkey.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="91da01b2-77e2-4406-8d8c-c4394c749846" InformativeScreenshot="7e04c5c61ec578fde300d72003ab7f33" Selector="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div' idx='3' tag='DIV' /&gt;" WaitForReady="COMPLETE">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                      </ui:Target>
+                    </ui:SendHotkey.Target>
+                  </ui:SendHotkey>
+                  <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
+                  <ui:ImageFound DisplayName="Image Exists 'msedge.exe &quot;#python'" Found="[isEndPage]" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ImageFound_13">
+                    <ui:ImageFound.Image>
+                      <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAACQAAAByCAYAAAA713NyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGJSURBVHhe7dRNboJQFMVxV+sUFsIUN+BKnDh1GVXwg2dDUgzp1duAVYsc5b4Kieck/5l5+QUejj73O/Gdc65zBKEIQhGE+lfQbDZ7OoJQBKEIQhGEIghFEIogFEEoglAEoQhCEYQiCEUQiiAUQSiCUAShCEIRhCIIRRCKIBRBKIJQBKFGe7eVLjVB6noB3TY4UJ0Z5LKNdKkJU2cCZbu1PFMTTvMG2m1TebQmoHYLM4G2m0SeqQ15hllA63QpqM16dVUT8ApmASWrD7ksTZatNSFvYSaQdN63HA7F6TPP/sB6Av2uKL7OT01RvYN0ZVmeUYMA6fRJ6T0bDEjnMuP/UHWOt+lFHxRIv76BgU6vjSAwgtAIQiMIjSA0gtAIQjOBJpOJ5HleHeVnJtB4PJYwDGU+n1fH2WcCxXEsitKiKKqOtM0E0gMWi4UEQfCD8jEzSKf3SJ+Wj3kB+RxBaASh1aAuEYQiCPW+oOl0erfL3730CSGM9vJX1obRerlD9zDa+17qRyOoPSdHiA8ReJhPT6oAAAAASUVORK5CYII=" />
+                    </ui:ImageFound.Image>
+                    <ui:ImageFound.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0f2623eb-0b06-4820-a5a1-5c4e6d388e77" Selector="&lt;wnd app='msedge.exe' cls='Chrome_WidgetWin_1' title='* | Search | LinkedIn*' /&gt;&#xA;&lt;wnd aaname='Horizontal' cls='Chrome_RenderWidgetHostHWND' title='Chrome Legacy Window' /&gt;&#xA;" WaitForReady="NONE">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                      </ui:Target>
+                    </ui:ImageFound.Target>
+                  </ui:ImageFound>
                 </Sequence>
-              </ui:InterruptibleWhile.Body>
-              <ui:InterruptibleWhile.Condition>
-                <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="endPage = False" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_2" />
-              </ui:InterruptibleWhile.Condition>
-            </ui:InterruptibleWhile>
-            <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[dt_Content]" DisplayName="Extract Structured Data 'Posts'" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='Column1' attr='text' name2='Column2' attr2='href'&gt;&lt;webctrl tag='li'/&gt;&lt;webctrl tag='div' idx='1'/&gt;&lt;webctrl tag='div' idx='3'/&gt;&lt;webctrl tag='div' idx='1'/&gt;&lt;webctrl tag='div' idx='1'/&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="434,106" sap2010:WorkflowViewState.IdRef="ExtractData_1" MaxNumberOfResults="0" SimulateClick="True">
-              <ui:ExtractData.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="76741e9f-9c31-42af-966f-51e66fcd4044" InformativeScreenshot="83d5c5cf10a082c9c8bc7cd12f7d1e52" Selector="&lt;webctrl parentid='voyager-feed' tag='UL' /&gt;" TimeoutMS="5000" WaitForReady="COMPLETE" />
-              </ui:ExtractData.Target>
-            </ui:ExtractData>
-            <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="434,288" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="C:\Users\tabac\Desktop\test.xlsx">
-              <ui:ExcelApplicationScope.Body>
-                <ActivityAction x:TypeArguments="ui:WorkbookApplication">
-                  <ActivityAction.Argument>
-                    <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
-                  </ActivityAction.Argument>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,179" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              </ui:InterruptibleDoWhile.Body>
+              <ui:InterruptibleDoWhile.Condition>
+                <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="isEndPage = False" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
+              </ui:InterruptibleDoWhile.Condition>
+            </ui:InterruptibleDoWhile>
+            <Sequence DisplayName="Scraping" sap:VirtualizedContainerService.HintSize="478,684" sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,276" sap2010:WorkflowViewState.IdRef="CommentOut_6">
+                <ui:CommentOut.Body>
+                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,198" sap2010:WorkflowViewState.IdRef="Sequence_13">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:ExcelWriteRange StartingCell="{x:Null}" AddHeaders="False" DataTable="[dt_Content]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="Post" />
+                    <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[dt_Content]" DisplayName="Extract Structured Data 'Posts'" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='Column1' attr='text' name2='Column2' attr2='href'&gt;&lt;webctrl tag='li'/&gt;&lt;webctrl tag='div' idx='1'/&gt;&lt;webctrl tag='div' idx='3'/&gt;&lt;webctrl tag='div' idx='1'/&gt;&lt;webctrl tag='div' idx='1'/&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ExtractData_1" MaxNumberOfResults="0" SimulateClick="True">
+                      <ui:ExtractData.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="76741e9f-9c31-42af-966f-51e66fcd4044" InformativeScreenshot="83d5c5cf10a082c9c8bc7cd12f7d1e52" Selector="&lt;webctrl parentid='voyager-feed' tag='UL' /&gt;" TimeoutMS="5000" WaitForReady="COMPLETE" />
+                      </ui:ExtractData.Target>
+                    </ui:ExtractData>
+                  </Sequence>
+                </ui:CommentOut.Body>
+              </ui:CommentOut>
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,276" sap2010:WorkflowViewState.IdRef="CommentOut_7">
+                <ui:CommentOut.Body>
+                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,198" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[dt_Content]" DisplayName="Extract Structured Data 'Posts'" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='li'/&gt;&lt;webctrl tag='div' idx='1'/&gt;&lt;/row&gt;&lt;column exact='1' name='content' attr='text' name2='link' attr2='href'&gt;&lt;webctrl tag='li'/&gt;&lt;webctrl tag='div' idx='1'/&gt;&lt;webctrl tag='div' idx='3'/&gt;&lt;webctrl tag='div' idx='1'/&gt;&lt;webctrl tag='div' idx='1'/&gt;&lt;/column&gt;&lt;column exact='1' name='name' attr='text' name2='link_person' attr2='href'&gt;&lt;webctrl tag='li'/&gt;&lt;webctrl tag='div' idx='1'/&gt;&lt;webctrl tag='div' idx='1'/&gt;&lt;webctrl tag='a' idx='1'/&gt;&lt;webctrl tag='div' idx='3'/&gt;&lt;webctrl tag='span' idx='1'/&gt;&lt;webctrl tag='span' idx='1'/&gt;&lt;webctrl tag='span' idx='1'/&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ExtractData_2" MaxNumberOfResults="0" SimulateClick="True">
+                      <ui:ExtractData.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="993538f4-9c9f-4ecf-818f-fff73c283891" InformativeScreenshot="6a810acc58026df1a8662bdf797f14fe" Selector="&lt;webctrl parentid='voyager-feed' tag='UL' /&gt;" TimeoutMS="5000" WaitForReady="COMPLETE" />
+                      </ui:ExtractData.Target>
+                    </ui:ExtractData>
+                  </Sequence>
+                </ui:CommentOut.Body>
+              </ui:CommentOut>
+            </Sequence>
+            <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="478,288" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="C:\Users\tabac\Desktop\test.xlsx">
+              <ui:ExcelApplicationScope.Body>
+                <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Write to an excel" sap:VirtualizedContainerService.HintSize="376,179" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:ExcelWriteRange StartingCell="{x:Null}" AddHeaders="False" DataTable="[dt_Content]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="[&quot;CV_&quot; + System.Text.RegularExpressions.Regex.Replace(in_Row.Item(&quot;Data_Search&quot;).ToString, &quot;#&quot;, &quot;&quot;)]" />
                   </Sequence>
                 </ActivityAction>
               </ui:ExcelApplicationScope.Body>

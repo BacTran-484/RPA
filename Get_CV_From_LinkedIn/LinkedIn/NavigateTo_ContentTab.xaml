@@ -63,7 +63,7 @@
         </ui:CursorPosition>
       </ui:Click.CursorPosition>
       <ui:Click.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2d438cc3-72dd-4371-8de6-159c3d04c705" InformativeScreenshot="675573bef36e1dbd3fca97dcaa09e648" Selector="&lt;html app='msedge.exe' title='* | Search | LinkedIn' /&gt;&lt;webctrl id='ember*' tag='BUTTON' type='button' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2d438cc3-72dd-4371-8de6-159c3d04c705" InformativeScreenshot="675573bef36e1dbd3fca97dcaa09e648" Selector="&lt;html app='msedge.exe' title='* | Search | LinkedIn' /&gt;&lt;webctrl tag='BUTTON' type='button' innertext='      Content ' /&gt;">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
