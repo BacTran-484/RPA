@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="NavigateTo_ContentTab" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1106,831" sap2010:WorkflowViewState.IdRef="NavigateTo_ContentTab_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="NavigateTo_ContentTab" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1085,831" sap2010:WorkflowViewState.IdRef="NavigateTo_ContentTab_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -63,7 +63,7 @@
         </ui:CursorPosition>
       </ui:Click.CursorPosition>
       <ui:Click.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2d438cc3-72dd-4371-8de6-159c3d04c705" InformativeScreenshot="675573bef36e1dbd3fca97dcaa09e648" Selector="&lt;html app='msedge.exe' title='* | Search | LinkedIn' /&gt;&lt;webctrl tag='BUTTON' type='button' innertext='      Content ' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2d438cc3-72dd-4371-8de6-159c3d04c705" InformativeScreenshot="8008073355dc93b7a250e3778d33ce7c" Selector="&lt;html app='chrome.exe' title='* | Search | LinkedIn' /&gt;&lt;webctrl tag='BUTTON' type='button' innertext='      Content ' /&gt;">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
