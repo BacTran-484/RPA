@@ -61,7 +61,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:SendOutlookMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Account="tabac@cmc.com.vn" Body="Dear Mr Phuong,&#xA;&#xA;RPA team would like to send an excel file including CVs taken from LinkedIn.&#xA;(This is automatic mail, please do not respond)&#xA;&#xA;Regards,&#xA;RPA team" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" IsBodyHtml="False" IsDraft="False" Subject="[RPAbot] Get CV from LinkedIn" To="ntphuong5@cmc.com.vn">
+    <ui:SendOutlookMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Account="tabac@cmc.com.vn" Body="Dear Mr Phuong,&#xA;&#xA;RPA team would like to send an excel file including CVs taken from LinkedIn.&#xA;(This is automatic mail, please do not respond)&#xA;&#xA;Regards,&#xA;RPA team" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" IsBodyHtml="False" IsDraft="False" Subject="[RPAbot] Get CV from LinkedIn" To="tabac@cmc.com.vn">
       <ui:SendOutlookMail.Files>
         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
           <InArgument x:TypeArguments="x:String">[attachFile]</InArgument>
