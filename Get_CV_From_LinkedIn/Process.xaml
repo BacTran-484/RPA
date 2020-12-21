@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>929,1592</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>936,1592</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -136,7 +136,7 @@
                         </ui:CursorPosition>
                       </ui:Click.CursorPosition>
                       <ui:Click.Target>
-                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a45ad833-414b-43ec-863a-a2091f8f798c" InformativeScreenshot="042c9d56a21a1d3274e882c4257879b2" Selector="&lt;html app='chrome.exe' title='Feed | LinkedIn' /&gt;&#xD;&#xA;&lt;webctrl tag='A' class='global-nav__primary-link global-nav__primary-link--active ember-view' /&gt;&#xD;&#xA;">
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a45ad833-414b-43ec-863a-a2091f8f798c" InformativeScreenshot="042c9d56a21a1d3274e882c4257879b2" Selector="&lt;html app='chrome.exe' title='* | Search | LinkedIn' /&gt;&lt;webctrl tag='A' parentclass='global-nav__primary-item' class='global-nav__primary-link ember-view' /&gt;">
                           <ui:Target.TimeoutMS>
                             <InArgument x:TypeArguments="x:Int32" />
                           </ui:Target.TimeoutMS>

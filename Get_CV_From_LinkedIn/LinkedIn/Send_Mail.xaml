@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Send_Mail" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="929,831" sap2010:WorkflowViewState.IdRef="Send_Mail_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Send_Mail" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="936,831" sap2010:WorkflowViewState.IdRef="Send_Mail_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="42">
       <x:String>System.Activities</x:String>
@@ -54,14 +54,18 @@
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Send_Mail" sap:VirtualizedContainerService.HintSize="376,237" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Default="C:\Users\tabac\Desktop\output_Data.xlsx" Name="attachFile" />
+      <Variable x:TypeArguments="x:String" Name="attachFile">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">C:\Users\tabac\Desktop\CV_PHP.xlsx</Literal>
+        </Variable.Default>
+      </Variable>
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:SendOutlookMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Account="tabac@cmc.com.vn" Body="Dear Mr Phuong,&#xA;&#xA;RPA team would like to send an excel file including CVs taken from LinkedIn.&#xA;(This is automatic mail, please do not respond)&#xA;&#xA;Regards,&#xA;RPA team" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" IsBodyHtml="False" IsDraft="False" Subject="[RPAbot] Get CV from LinkedIn" To="tabac@cmc.com.vn">
+    <ui:SendOutlookMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Account="tabac@cmc.com.vn" Body="Dear Mr Phuong,&#xD;&#xA;&#xD;&#xA;RPA team would like to send an excel file including CVs taken from LinkedIn.&#xD;&#xA;&#xD;&#xA;Regards,&#xD;&#xA;RPA team&#xD;&#xA;&#xD;&#xA;(This is automatic mail, please do not respond)" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" IsBodyHtml="False" IsDraft="False" Subject="[RPAbot] Get CV from LinkedIn" To="tabac@cmc.com.vn">
       <ui:SendOutlookMail.Files>
         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
           <InArgument x:TypeArguments="x:String">[attachFile]</InArgument>
